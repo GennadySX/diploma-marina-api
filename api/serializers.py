@@ -2,7 +2,6 @@ from rest_framework import serializers
 from api.models import *
 
 
-
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
@@ -14,6 +13,7 @@ class CourseSerializer(serializers.ModelSerializer):
             'status',
         )
         model = Course
+
 
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +28,14 @@ class LessonSerializer(serializers.ModelSerializer):
             'status',
         )
         model = Lesson
+
+
+class LikedSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'course_id',
+            'user_id',
+            'desc',
+        )
+        model = Liked

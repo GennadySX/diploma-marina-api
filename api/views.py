@@ -19,3 +19,7 @@ class ApiCourseView(generics.ListCreateAPIView):
 class ApiLessonView(generics.ListCreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
+class ApiLikedView(generics.ListCreateAPIView):
+    queryset = Liked.objects.all()
+    serializer_class = LikedSerializer

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+
+
 # Create your models here.
 
 class Course(models.Model):
@@ -41,3 +43,16 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
+
+
+class Liked(models.Model):
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Курс', )
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Избратель', on_delete=models.CASCADE)
+    created_at = models.DateField(verbose_name='Дата избрание', default=timezone.now)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Избранный'
+        verbose_name_plural = 'Избранные'
